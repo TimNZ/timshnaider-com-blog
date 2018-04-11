@@ -1,4 +1,5 @@
 module.exports = {
+  // pathPrefix: '/blog',
   siteMetadata: {
     title: 'Gatsby + Netlify CMS Starter',
   },
