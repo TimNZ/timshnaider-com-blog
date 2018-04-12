@@ -9,7 +9,7 @@ const Navbar = () => (
       <div className="navbar-brand">
         <Link to="/" className="navbar-item">
           <figure className="image">
-            <img src="http://timshnaider.com/happy_logo_2.448f12be.png" alt="Tim Shnaider Logo" />
+            <img src="https://timshnaider.com/happy_logo_2.448f12be.png" alt="Tim Shnaider Logo" />
           </figure>
         </Link>
       </div>

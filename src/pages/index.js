@@ -1,29 +1,34 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
-
+import { kebabCase } from 'lodash'
 export default class IndexPage extends React.Component {
   render() {
     const { data } = this.props
-    const { edges: posts } = data.allMarkdownRemark
-    console.log(data)
-    const group = []
+    const { edges: posts,group } = data.allMarkdownRemark
 
     return (
       <section className="section">
         <div className="container">
           <div className="content">
             <h1 className="has-text-weight-bold is-size-2">Welcome to my blog</h1>
+            <div className="columns">
+              <div
+                className="column is-10 is-offset-1"
+              >
+                <ul className="taglist">
+                  {group.map(tag => (
+                    <li key={tag.fieldValue}>
+                      <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
+                        {tag.fieldValue} ({tag.totalCount})
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            
           </div>
-          <ul className="taglist">
-            {group.map(tag => (
-              <li key={tag.fieldValue}>
-                <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-                  {tag.fieldValue} ({tag.totalCount})
-                </Link>
-              </li>
-            ))}
-          </ul>
   
           {posts
             .filter(post => post.node.frontmatter.templateKey === 'blog-post')
@@ -67,6 +72,10 @@ IndexPage.propTypes = {
 export const pageQuery = graphql`
   query IndexQuery {
     allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+      group(field: frontmatter___tags) {
+        fieldValue
+        totalCount
+      }
       edges {
         node {
           excerpt(pruneLength: 400)
