@@ -28,7 +28,7 @@
   "main": "n/a",
   "scripts": {
     "start": "npm run develop",
-    "build": "gatsby build --prefix-paths",
+    "build": "rm -rf public/* && gatsby build --prefix-paths && cp ./_headers public",
     "develop": "gatsby develop",
     "serve": "gatsby serve",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"{gatsby-*.js,src/**/*.js}\"",
