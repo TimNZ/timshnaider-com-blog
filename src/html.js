@@ -31,13 +31,13 @@ module.exports = class HTML extends React.Component {
           />
           {this.props.headComponents}
           {css}
-          <script async={true} src="https://www.googletagmanager.com/gtag/js?id=UA-117431701-1"></script>
+          <script async={true} src="https://www.googletagmanager.com/gtag/js?id=UA-117431701-3"></script>
           <script dangerouslySetInnerHTML={{ __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
 
-              gtag('config', 'UA-117431701-1',{
+              gtag('config', 'UA-117431701-3',{
               'linker': {
                 'domains': ['timshnaider.com', 'blog.timshnaider.com']
               }
